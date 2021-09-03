@@ -3,7 +3,10 @@ var dataid =1;
 $(document).ready(function() { //---------------nas轉換
     $("#nasbutton").click(function(){
         
-        if($("#inputnas").val().length<1) /*---------input failure---------*/
+        var nasinput=$("#inputnas").val();
+        var nasoutput = $("#outputnas").val();
+
+        if(nasinput.length<1) /*---------input failure---------*/
         {	
             $(".notify").toggleClass("activefailure");
             $("#notifyType").addClass("failure");
@@ -16,24 +19,29 @@ $(document).ready(function() { //---------------nas轉換
             
             return false;
         }
+
+        else if (nasinput.indexOf('/')==-1&&nasinput.indexOf('\\')==-1&&nasinput.indexOf('mixcode_workshare')==-1) // 沒偵測到路徑
+        {
+            $("#outputnas").attr("value","不是正確路徑");	
+        }
+
         else {
 
-            var zz = $("#inputnas").val();
-            var yy = $("#outputnas").val();
-
-            if(document.getElementById('togBtn').checked) //win -> mac
+            if(nasinput.indexOf('\\')>=0) //win -> mac
             {
-                var nzz= zz.replace(/\\/g,'/'); // replace \ -> /
-                var nnzz=nzz.replace('//diskstation','/Volumes');
+                var slashtrans= nasinput.replace(/\\/g,'/'); // replace \ -> /
+                var nnzz=slashtrans.replace('//diskstation','/Volumes');
                 
-                $("#outputnas").attr("value",nnzz);						
+                $("#outputnas").attr("value",nnzz);
+                $("#togBtn").prop("checked", true);			
             }
             else  //mac -> win
             {
-                var nzz= zz.replace(/\//g,'\\'); // replace / -> \
-                var nnzz=nzz.replace('\\Volumes\\','');
+                var slashtrans= nasinput.replace(/\//g,'\\'); // replace / -> \
+                var nnzz=slashtrans.replace('\\Volumes\\','');
                 var m="\\\\diskstation\\"+nnzz;
-                $("#outputnas").attr("value",m);	
+                $("#outputnas").attr("value",m);
+                $("#togBtn").prop("checked", false);	
             }
 
             var copyText = document.getElementById("outputnas"); //---------Copy Text
