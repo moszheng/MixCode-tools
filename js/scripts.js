@@ -12,6 +12,9 @@ $(document).ready(function() { //---------------nas轉換
             $("#notifyType").addClass("failure");
             $("#error").prepend("failure");
 
+            //$(".feedback").toggleClass("active"); //----------- Notify
+            $("#feedbackType").toggleClass("invalid_feedback");
+
             setTimeout(function(){
                 $(".notify").removeClass("activefailure");
                 $("#notifyType").removeClass("failure");
@@ -20,7 +23,7 @@ $(document).ready(function() { //---------------nas轉換
             return false;
         }
 
-        else if (nasinput.indexOf('/')==-1&&nasinput.indexOf('\\')==-1&&nasinput.indexOf('mixcode_workshare')==-1) // 沒偵測到路徑
+        else if (nasinput.indexOf('/')==-1&&nasinput.indexOf('\\')==-1||nasinput.indexOf('mixcode_workshare')==-1) // 沒偵測到路徑
         {
             $("#outputnas").attr("value","不是正確路徑");	
         }

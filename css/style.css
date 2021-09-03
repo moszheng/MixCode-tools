@@ -48,6 +48,13 @@ body {
 .failure:before{
     Content:"輸入失敗";
 }
+
+.invalid_feedback:before{
+    Content:"請輸入正確路徑";
+    font-size: .875em;
+    color: #dc3545;
+}
+
 /*-----------------------switch------------*/
 .switch {
     position: relative;
