@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+	<form>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="MixCode Tools">
+		<meta property="og:description" content="MixCode Tools" />
+		<meta property="og:title" content="MixCode Tools" />
+
+		<title>MixCode Tools</title>
+		<link rel="icon" href="https://pro2-bar-s3-cdn-cf2.myportfolio.com/c011f0d7852186705bead57bafae0c96/d8f00867-73df-4837-93fc-9f5d5f068557_carw_1x1x32.png?h=d9c2ed76f708163a1ffec3ece7794f8e" />
+		
+		<meta property="og:image" content="https://i.imgur.com/doYxxFI.png" />
+		
+		<script src="https://code.jquery.com/jquery-1.12.4.min.js"integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="crossorigin="anonymous"></script>
+		
+		<!-- Bootstrap CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+		
+		<!--Custom Style-->
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@700&display=swap');
+			h2{
+				font-family:'Noto Sans TC', '微軟正黑體', sans-serif;
+			}
+			body {
+  				background-color: #FFC700;
+				font-family: 'Verdana','微軟正黑體', sans-serif;	
+			}
+			.container {
+   				max-width: 800px;
+				background-color: #FFF;
+			}
+			.rounded {
+    			border-radius: .8rem!important;
+			}
+			:focus {
+				border-color: #000 !important;
+				box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3) !important;
+			}
+			.notify{ /*------------提示-----------*/ 
+  				position:absolute;
+  				top:0px;
+  				width:100%;
+  				height:0;  
+  				box-sizing:border-box;
+  				color:white;  
+  				text-align:center;
+  				overflow:hidden;
+  				box-sizing:border-box;
+  				transition:height .2s;
+			}
+			#notifyType:before{
+  				display:block;
+ 				margin:15px; 
+			}
+			.active{
+				height:50px; /*黑色高*/
+				background:rgba(0,0,0,.6);
+			}
+			.activefailure{
+				height:50px;
+				background:rgba(247, 0, 0, 0.6);
+			}
+			.success:before{
+				Content:"已複製路徑";
+			}
+
+			.failure:before{
+				Content:"輸入失敗";
+			}
+			/*-----------------------switch------------*/
+			.switch {
+				position: relative;
+				display: inline-block;
+				width: 90px;
+				height: 34px;
+			}
+			.switch input {display:none;}
+			.slider {
+				position: absolute;
+				cursor: pointer;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: rgb(255, 197, 2);
+				-webkit-transition: .4s;
+				transition: .4s;
+			}
+			.slider:before {
+				position: absolute;
+				content: "";
+				height: 26px;
+				width: 26px;
+				left: 4px;
+				bottom: 4px;
+				background-color: white;
+				-webkit-transition: .4s;
+				transition: .4s;
+			}
+
+			input:checked + .slider {
+				background-color: #000;
+			}
+			input:focus + .slider {
+				box-shadow: 0 0 1px #2196F3;
+			}
+			input:checked + .slider:before {
+				-webkit-transform: translateX(55px);
+				-ms-transform: translateX(55px);
+				transform: translateX(55px);
+			}
+			/*------ ADDED CSS ---------*/
+			.on
+			{
+				display: none;
+			}
+			.on, .off
+			{
+				color: white;
+				position: absolute;
+				transform: translate(-50%,-50%);
+				top: 50%;
+				left: 50%;
+				font-size: 10px;
+				font-family: Verdana, sans-serif;
+			}
+			input:checked+ .slider .on
+			{display: block;}
+
+			input:checked + .slider .off
+			{display: none;}
+
+			/* Rounded sliders */
+			.slider.round {
+				border-radius: 34px;
+			}
+			.slider.round:before {
+				border-radius: 50%;
+			}
+			
+		</style>
+	</head>
+	<body>
+		
+		<div class="notify">
+			<span id="notifyType" class=""></span>
+		</div>
+		
+		<div class="text-center">
+
+			<h2 class="my-5"> NAS 路徑轉換 </h2>
+			<div class="container rounded p-5">
+				<div class="row">
+					<div class="col-9">
+						<div class="mb-3">
+							<input class="form-control" type="search" id="inputnas" placeholder=" 輸入路徑">
+						</div>
+						<div class="mb-4">
+							<input class="form-control" type="search" id="outputnas"placeholder=" 輸出路徑" readonly>
+						</div>
+						<div class ="row px-3 mb-3">
+							<div class ="col align-self-center">
+								<b>Mac</b>
+							</div>
+							
+							<label class="col-2 align-self-center switch">
+								<input type="checkbox" id="togBtn">
+								<div class="slider round">
+								<!--ADDED HTML -->
+								<span class="on"><</span>
+								<span class="off">></span>
+								<!--END-->
+								</div>
+							</label>
+
+							<div class ="col align-self-center">
+								<b>Windows</b>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<button type="submit" class="w-100 h-50 btn btn-dark mt-2" id="nasbutton">轉換 !</button>
+					</div>
+				</div>
+			</div>
+
+			<h2 class="my-5"> 咪扣吃什麼 </h2>
+
+			<div class="container rounded p-5">
+				
+					<button type="button"  class="w-100 btn btn-dark my-2 py-3" id="Eatbutton">開吃 </button>
+					<input class='form-control my-2' id="eatoutput" type="text" placeholder=" 吃...." disabled readonly>
+				
+			</div>
+		</div>
+	</form>
+	<script>
+		var dataid =1;
+		
+		$(document).ready(function() { //---------------nas轉換
+			$("#nasbutton").click(function(){
+				
+				if($("#inputnas").val().length<1) /*---------input failure---------*/
+				{	
+					$(".notify").toggleClass("activefailure");
+					$("#notifyType").addClass("failure");
+					$("#error").prepend("failure");
+
+					setTimeout(function(){
+						$(".notify").removeClass("activefailure");
+						$("#notifyType").removeClass("failure");
+					},2000);
+					
+					return false;
+				}
+				else {
+
+					var zz = $("#inputnas").val();
+					var yy = $("#outputnas").val();
+
+					if(document.getElementById('togBtn').checked) //win -> mac
+					{
+						var nzz= zz.replace(/\\/g,'/'); // replace \ -> /
+						var nnzz=nzz.replace('//diskstation','/Volumes');
+						
+						$("#outputnas").attr("value",nnzz);						
+					}
+					else  //mac -> win
+					{
+						var nzz= zz.replace(/\//g,'\\'); // replace / -> \
+						var nnzz=nzz.replace('\\Volumes\\','');
+						var m="\\\\diskstation\\"+nnzz;
+						$("#outputnas").attr("value",m);	
+					}
+
+					var copyText = document.getElementById("outputnas"); //---------Copy Text
+					copyText.select();
+					copyText.setSelectionRange(0, 99999);
+					document.execCommand("copy");
+					
+					$(".notify").toggleClass("active"); //----------- Notify
+					$("#notifyType").toggleClass("success");
+					
+					setTimeout(function(){
+						$(".notify").removeClass("active");
+						$("#notifyType").removeClass("success");
+					},2000);
+				}
+			});
+		});
+		
+		$(document).ready(function() {// Ramdom eat
+			$("#Eatbutton").click(function(){
+				var items = ["二馬","大安健康餐盒","廚餘街","摩斯","Subway","全家","越南河粉","小勇士炸雞"];
+				var randomitems = items[Math.floor(Math.random()*items.length)];
+				$("#eatoutput").attr("value",randomitems);
+			});
+		});
+
+		$('form').submit(function(e) { //防止submit refresh
+   			 e.preventDefault();
+		});
+	</script>
+	</body>
+</html>
