@@ -1,88 +1,92 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-	
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="MixCode Tools">
-	<meta property="og:description" content="MixCode Tools" />
-	<meta property="og:title" content="MixCode Tools" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="MixCode Tools" />
+        <meta property="og:description" content="MixCode Tools" />
+        <meta property="og:title" content="MixCode Tools" />
 
-	<title>MixCode Tools</title>
-	<link rel="icon" href="https://pro2-bar-s3-cdn-cf2.myportfolio.com/c011f0d7852186705bead57bafae0c96/d8f00867-73df-4837-93fc-9f5d5f068557_carw_1x1x32.png?h=d9c2ed76f708163a1ffec3ece7794f8e" />
-	
-	<meta property="og:image" content="https://i.imgur.com/doYxxFI.png" />
-	
-	<script src="https://code.jquery.com/jquery-1.12.4.min.js"integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="crossorigin="anonymous"></script>
-	
-	<!-- Bootstrap CSS -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-	
-	<!--Custom Style-->
-	<link rel="stylesheet" href="css/style.css">
-	
-</head>
-<form>
-	<body>
-		
-		<div class="notify">
-			<span id="notifyType" class=""></span>
-		</div>
-		
-		<div class="text-center">
+        <title>MixCode Tools</title>
+        <link
+            rel="icon"
+            href="https://pro2-bar-s3-cdn-cf2.myportfolio.com/c011f0d7852186705bead57bafae0c96/d8f00867-73df-4837-93fc-9f5d5f068557_carw_1x1x32.png?h=d9c2ed76f708163a1ffec3ece7794f8e"
+        />
 
-			<h2 class="my-5"> NAS 路徑轉換 </h2>
-			<div class="container rounded p-5">
-				<div class="row">
-					<div class="col-9">
-						<div class="mb-3">
-							<input type="text" class="form-control" id="inputnas" placeholder=" 輸入路徑" required>
-							<div class="feedback">
-								<span id="feedbackType" class=""></span>
-							</div>
-							
-						</div>
-						<div class="mb-4">
-							<input class="form-control" type="search" id="outputnas"placeholder=" 輸出路徑" readonly>
-						</div>
-						<div class ="row px-3 mb-3">
-							<div class ="col align-self-center">
-								<b>Mac</b>
-							</div>
-							
-							<label class="col-2 align-self-center switch">
-								<input type="checkbox" id="togBtn" disabled>
-								<div class="slider round">
-								<!--ADDED HTML -->
-								<span class="on"><</span>
-								<span class="off">></span>
-								<!--END-->
-								</div>
-							</label>
+        <meta property="og:image" content="https://i.imgur.com/doYxxFI.png" />
 
-							<div class ="col align-self-center">
-								<b>Windows</b>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<button type="submit" class="w-100 h-50 btn btn-dark mt-2" id="nasbutton">轉換 !</button>
-					</div>
-				</div>
-			</div>
+        <script
+            src="https://code.jquery.com/jquery-1.12.4.min.js"
+            integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+            crossorigin="anonymous"
+        ></script>
 
-			<h2 class="my-5"> 咪扣吃什麼 </h2>
+        <!-- Bootstrap CSS -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+            crossorigin="anonymous"
+        />
 
-			<div class="container rounded p-5">
-				
-				<button type="button"  class="w-100 btn btn-dark my-2 py-3" id="Eatbutton">開吃 </button>
-				<input class='form-control my-2' id="eatoutput" type="text" placeholder=" 吃...." disabled readonly>
-				
-			</div>
-		</div>
+        <!--Custom Style-->
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <form>
+        <body>
+            <div class="notify">
+                <span id="notifyType" class=""></span>
+            </div>
 
-		<script src="js/scripts.js"></script>
+            <div class="text-center">
+                <h2 class="my-5">NAS 路徑轉換</h2>
+                <div class="container rounded p-5">
+                    <div class="row">
+                        <div class="col-9">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" id="inputnas" placeholder=" 輸入路徑" required />
+                                <div class="feedback">
+                                    <span id="feedbackType" class=""></span>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <input class="form-control" type="search" id="outputnas" placeholder=" 輸出路徑" readonly />
+                            </div>
+                            <div class="row px-3 mb-3">
+                                <div class="col align-self-center">
+                                    <b>Mac</b>
+                                </div>
 
-	</body>
-</form>
+                                <label class="col-2 align-self-center switch">
+                                    <input type="checkbox" id="togBtn" disabled />
+                                    <div class="slider round">
+                                        <!--ADDED HTML -->
+                                        <span class="on"><</span>
+                                        <span class="off">></span>
+                                        <!--END-->
+                                    </div>
+                                </label>
+
+                                <div class="col align-self-center">
+                                    <b>Windows</b>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <button type="submit" class="w-100 h-50 btn btn-dark mt-2" id="nasbutton">轉換 !</button>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="my-5">咪扣吃什麼</h2>
+
+                <div class="container rounded p-5">
+                    <button type="button" class="w-100 btn btn-dark my-2 py-3" id="Eatbutton">開吃</button>
+                    <input class="form-control my-2" id="eatoutput" type="text" placeholder=" 吃...." disabled readonly />
+                </div>
+            </div>
+
+            <script src="js/scripts.js"></script>
+        </body>
+    </form>
 </html>
