@@ -1,0 +1,14 @@
+{
+  "name": "mixcode-tools",
+  "version": "1.0.0",
+  "description": "A Website for MixCode employers to transform NAS route easier.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "moszheng",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.57.0"
+  }
+}
